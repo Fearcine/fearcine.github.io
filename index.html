@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Get to know Fear</title>
+
+  
+  <style>
+    :root {
+      --bg-url: url('bg.jpg'); 
+      --pink: #f4acb7;
+      --lavender: #cdb4db;
+      --blue: #bde0fe;
+      --cream: #f2e9e4;
+      --dark: #1b1b1f;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: "Courier New", monospace;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background: var(--dark);
+      overflow: hidden;
+      color: var(--cream);
+    }
+
+    
+    .bg {
+      position: fixed;
+      inset: 0;
+      background-image: var(--bg-url);
+      background-size: cover;
+      background-position: center;
+      filter: blur(2px) brightness(0.7);
+      z-index: -1;
+    }
+
+    .wrap {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      background: rgba(38,38,44,0.9);
+      border: 3px solid var(--pink);
+      border-radius: 18px;
+      padding: 26px;
+      width: 360px;
+      box-shadow: 0 0 0 4px #000;
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: 22px;
+      color: var(--pink);
+    }
+
+    p {
+      font-size: 14px;
+      margin-bottom: 18px;
+      color: var(--lavender);
+    }
+
+    .links {
+      display: grid;
+      gap: 10px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      background: #3a3a44;
+      border: 2px solid var(--blue);
+      border-radius: 10px;
+      color: var(--blue);
+      text-decoration: none;
+      transition: 0.15s ease;
+    }
+
+    .btn:hover {
+      background: var(--blue);
+      color: var(--dark);
+      transform: translateX(4px);
+    }
+
+    .icon {
+      font-size: 18px;
+    }
+
+    .footer {
+      margin-top: 16px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--cream);
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+
+  
+  <div class="bg"></div>
+
+  <div class="wrap">
+    <div class="card">
+      <h1>Fear's Socials</h1>
+      <p>student • indie game dev • Artist </p>
+
+      <div class="links">
+        <a class="btn" href="https://www.instagram.com/fearcin.e/" target="_blank">
+          <span class="icon">📸</span> Instagram
+        </a>
+        <a class="btn" href="https://in.pinterest.com/Fe4r1icia/" target="_blank">
+          <span class="icon">📌</span> Pinterest
+        </a>
+        <a class="btn" href="https://discord.com/users/916936464833597466" target="_blank">
+          <span class="icon">💬</span> Discord
+        </a>
+        <a class="btn" href="https://github.com/Fearcine" target="_blank">
+          <span class="icon">💻</span> GitHub
+        </a>
+      </div>
+
+      <div class="footer">★ made with caffeine & white monster for timepass ★</div>
+    </div>
+  </div>
+
+</body>
+</html>
