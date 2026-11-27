@@ -1,201 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>kettletoro.shop | Fan-Made Holding Page</title>
+  <title>kettletoro.shop — Under Maintenance</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap"
+    rel="stylesheet" />
   <style>
     :root {
-      --bg-paper: #FAF5FF;
-      --bg-grid: rgba(20, 20, 20, 0.06);
-      --surface: #FFFDF7;
-      --surface-alt: #FFF3F7;
+      --bg: #F5EDE3;
+      --bg-dot: rgba(20, 20, 20, .09);
+      --paper: #FFFDF7;
       --ink: #141414;
       --muted: #4A4458;
       --pink: #FF8FAB;
-      --pink-deep: #D9386A;
+      --pink-soft: #FFD6E3;
+      --pink-deep: #C42B5E;
       --yellow: #FFE45E;
       --mint: #A8F0D1;
       --sky: #B8D0FF;
       --lavender: #E2CFFF;
-      --border: 3px solid #141414;
-      --shadow-lg: 8px 8px 0px #141414;
-      --shadow-md: 5px 5px 0px #141414;
-      --shadow-sm: 3px 3px 0px #141414;
-      --text-heading: clamp(1.625rem, 2.6vw, 2.05rem);
-      --text-body: 1rem;
-      --text-sm: 0.875rem;
-      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+      --border: 3px solid var(--ink);
+      --shadow-lg: 8px 8px 0 var(--ink);
+      --shadow-md: 5px 5px 0 var(--ink);
+      --shadow-sm: 3px 3px 0 var(--ink);
+      --ease: cubic-bezier(.22, 1, .36, 1);
     }
 
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
+    html,
+    body {
+      height: 100%;
     }
 
     body {
       margin: 0;
-      font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
-      font-size: var(--text-body);
-      line-height: 1.6;
+      font-family: "Plus Jakarta Sans", system-ui, sans-serif;
       color: var(--ink);
-      background-color: var(--bg-paper);
-      background-image:
-        linear-gradient(to right, var(--bg-grid) 1px, transparent 1px),
-        linear-gradient(to bottom, var(--bg-grid) 1px, transparent 1px);
-      background-size: 28px 28px;
-      overflow-x: hidden;
+      background: var(--bg);
+      background-image: radial-gradient(var(--bg-dot) 1.3px, transparent 1.3px);
+      background-size: 22px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+      padding: 1.25rem;
     }
 
-    h1, h2, h3, .brand-wordmark {
+    h1,
+    h2,
+    .brand {
       font-family: "Bricolage Grotesque", system-ui, sans-serif;
       margin: 0;
-      letter-spacing: -0.03em;
-      color: var(--ink);
+      letter-spacing: -.03em;
     }
 
-    h2 {
-      font-size: var(--text-heading);
-      line-height: 1.15;
+    .tape {
+      position: absolute;
+      width: 110px;
+      height: 26px;
+      background-color: rgba(255, 228, 94, .88);
+      background-image: repeating-linear-gradient(-45deg, transparent, transparent 6px, rgba(20, 20, 20, .08) 6px, rgba(20, 20, 20, .08) 12px);
+      border: 2px solid rgba(20, 20, 20, .78);
+      pointer-events: none;
+      z-index: 4;
     }
 
-    h3 {
-      font-size: var(--text-heading);
-      line-height: 1.15;
+    .tape.pink {
+      background-color: rgba(255, 143, 171, .85);
     }
 
-    p {
-      margin: 0;
-      max-width: 62ch;
+    .tape.mint {
+      background-color: rgba(168, 240, 209, .88);
     }
 
-    a {
-      color: inherit;
+    .tape.sky {
+      background-color: rgba(184, 208, 255, .88);
     }
 
-    button {
-      font-family: inherit;
-      cursor: pointer;
-    }
-
-    /* Sticky single-line navbar */
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 40;
-      padding: 0.9rem 1.25rem;
-      transition: background-color 180ms var(--ease-out), border-color 180ms var(--ease-out);
-      border-bottom: 3px solid transparent;
-    }
-
-    .site-header.is-scrolled {
-      background-color: rgba(255, 253, 247, 0.95);
-      border-bottom-color: var(--ink);
-      backdrop-filter: blur(8px);
-    }
-
-    .header-inner {
-      max-width: 1140px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .brand-wordmark {
-      font-size: clamp(1.35rem, 2.2vw, 1.7rem);
-      font-weight: 800;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      white-space: nowrap;
-    }
-
-    .brand-dot {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: var(--pink);
-      border: 2.5px solid var(--ink);
-      display: inline-block;
-      flex-shrink: 0;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.15rem;
-    }
-
-    .nav-link {
-      font-size: var(--text-sm);
-      font-weight: 700;
-      text-decoration: none;
-      padding: 0.35rem 0.2rem;
-      border-bottom: 2.5px solid transparent;
-      background: none;
-      border-top: 0;
-      border-left: 0;
-      border-right: 0;
-      color: var(--ink);
-      transition: border-color 160ms var(--ease-out), transform 160ms var(--ease-out);
-      white-space: nowrap;
-    }
-
-    .nav-link:hover,
-    .nav-link:focus-visible {
-      border-bottom-color: var(--ink);
-      outline: none;
-    }
-
-    .bag-trigger {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: var(--text-sm);
-      font-weight: 700;
-      background: var(--yellow);
-      color: var(--ink);
-      border: 2.5px solid var(--ink);
-      border-radius: 10px;
-      padding: 0.45rem 0.85rem;
-      box-shadow: var(--shadow-sm);
-      transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
-      font-variant-numeric: tabular-nums;
-      white-space: nowrap;
-    }
-
-    .bag-trigger:hover {
-      transform: translate(-1px, -1px);
-      box-shadow: 4px 4px 0px var(--ink);
-    }
-
-    .bag-trigger:active {
-      transform: translate(2px, 2px);
-      box-shadow: 1px 1px 0px var(--ink);
-    }
-
-    /* Main container */
-    .page-wrap {
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 0 1.25rem 4rem;
-    }
-
-    /* Hero: monumental scrapbook poster bleeding cleanly from top */
-    .hero {
-      position: relative;
-      padding: clamp(2.5rem, 6vw, 4.75rem) 0 clamp(3rem, 6vw, 4.75rem);
-      text-align: center;
-    }
 
     .layer-wrap {
       position: relative;
@@ -206,1322 +98,291 @@
       position: absolute;
       inset: 0;
       border: var(--border);
-      border-radius: 22px;
       pointer-events: none;
-    }
-
-    .hero-stage {
-      position: relative;
-      z-index: 2;
-      background: var(--surface);
-      border: var(--border);
-      border-radius: 22px;
-      box-shadow: var(--shadow-lg);
-      padding: clamp(2.4rem, 5.5vw, 4.4rem) clamp(1.25rem, 4vw, 3.5rem);
-      overflow: visible;
-    }
-
-    .hero-back-pink {
-      background: var(--pink);
-      transform: rotate(-1.6deg) translate(-6px, 8px);
       z-index: 1;
     }
 
-    .hero-back-mint {
-      background: var(--mint);
-      transform: rotate(1.3deg) translate(8px, 10px);
+
+    .card-outer {
+      width: 100%;
+      max-width: 560px;
+      animation: floatIn .7s var(--ease) both;
+    }
+
+    @keyframes floatIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px) rotate(-2deg);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) rotate(-0.5deg);
+      }
+    }
+
+    .card-back-pink {
+      background: var(--pink);
+      border-radius: 22px;
+      transform: rotate(-1.8deg) translate(-6px, 8px);
       z-index: 0;
     }
 
-    /* Washi tape strips */
-    .washi-tape {
-      position: absolute;
-      width: 118px;
-      height: 30px;
-      background-color: rgba(255, 228, 94, 0.88);
-      background-image: repeating-linear-gradient(
-        -45deg,
-        transparent,
-        transparent 7px,
-        rgba(20, 20, 20, 0.08) 7px,
-        rgba(20, 20, 20, 0.08) 14px
-      );
-      border: 2px solid rgba(20, 20, 20, 0.78);
-      z-index: 3;
-      pointer-events: none;
+    .card-back-mint {
+      background: var(--mint);
+      border-radius: 22px;
+      transform: rotate(1.4deg) translate(8px, 10px);
+      z-index: 0;
     }
 
-    .washi-tape.pink {
-      background-color: rgba(255, 143, 171, 0.85);
-    }
-
-    .washi-tape.sky {
-      background-color: rgba(184, 208, 255, 0.88);
-    }
-
-    .washi-tape.mint {
-      background-color: rgba(168, 240, 209, 0.88);
-    }
-
-    .hero-tape-left {
-      top: -15px;
-      left: 34px;
-      transform: rotate(-9deg);
-    }
-
-    .hero-tape-right {
-      top: -14px;
-      right: 34px;
-      transform: rotate(8deg);
-    }
-
-    .hero-title {
-      font-size: clamp(2.5rem, 6.8vw, 5.4rem);
-      font-weight: 800;
-      line-height: 1.04;
-      letter-spacing: -0.04em;
-      max-width: 18ch;
-      margin: 0 auto 1.35rem;
-    }
-
-    .hero-highlight {
-      display: inline-block;
-      background: var(--yellow);
-      border: var(--border);
-      border-radius: 14px;
-      padding: 0.04em 0.24em 0.08em;
-      box-shadow: 5px 5px 0px var(--ink);
-      transform: rotate(-1.5deg);
-    }
-
-    .hero-copy {
-      font-size: var(--text-body);
-      color: var(--muted);
-      font-weight: 600;
-      margin: 0 auto 1.9rem;
-      max-width: 48ch;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.55rem;
-      background: var(--pink);
-      color: var(--ink);
-      font-size: var(--text-body);
-      font-weight: 700;
-      text-decoration: none;
-      border: var(--border);
-      border-radius: 14px;
-      padding: 0.9rem 1.65rem;
-      box-shadow: var(--shadow-md);
-      transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out), background-color 160ms var(--ease-out);
-    }
-
-    .btn-primary:hover {
-      background: #FF789B;
-      transform: translate(-2px, -2px);
-      box-shadow: 7px 7px 0px var(--ink);
-    }
-
-    .btn-primary:active {
-      transform: translate(3px, 3px);
-      box-shadow: 2px 2px 0px var(--ink);
-    }
-
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.45rem;
-      background: var(--surface);
-      color: var(--ink);
-      font-size: var(--text-sm);
-      font-weight: 700;
-      text-decoration: none;
-      border: 2.5px solid var(--ink);
-      border-radius: 12px;
-      padding: 0.65rem 1.15rem;
-      box-shadow: var(--shadow-sm);
-      transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out), background-color 160ms var(--ease-out);
-    }
-
-    .btn-secondary:hover {
-      background: var(--yellow);
-      transform: translate(-1px, -1px);
-      box-shadow: 4px 4px 0px var(--ink);
-    }
-
-    .btn-secondary:active {
-      transform: translate(2px, 2px);
-      box-shadow: 1px 1px 0px var(--ink);
-    }
-
-    /* Doodle stickers positioned cleanly outside text flow */
-    .hero-doodle {
-      position: absolute;
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    .doodle-star {
-      bottom: -24px;
-      left: 28px;
-      width: 56px;
-      height: 56px;
-      transform: rotate(-10deg);
-    }
-
-    .doodle-heart {
-      bottom: -22px;
-      right: 34px;
-      width: 52px;
-      height: 52px;
-      transform: rotate(12deg);
-    }
-
-    /* Catalog Section */
-    .section-block {
-      margin-top: clamp(3rem, 6vw, 4.75rem);
-    }
-
-    .section-head {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 0.75rem 1.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .section-note {
-      font-size: var(--text-body);
-      color: var(--muted);
-      font-weight: 600;
-    }
-
-    /* Asymmetric scrapbook showcase grid */
-    .catalog-grid {
-      display: grid;
-      grid-template-columns: 1.18fr 0.82fr;
-      gap: 2.25rem;
-      align-items: start;
-    }
-
-    .scrapbook-sheet {
+    .card {
       position: relative;
       z-index: 2;
-      background: var(--surface);
+      background: var(--paper);
       border: var(--border);
-      border-radius: 20px;
+      border-radius: 22px;
       box-shadow: var(--shadow-lg);
-      padding: 1.65rem;
-    }
-
-    .sheet-bmw {
-      transform: rotate(-0.6deg);
-    }
-
-    .back-sky {
-      background: var(--sky);
-      border-radius: 20px;
-      transform: rotate(1.6deg) translate(6px, 8px);
-      z-index: 1;
-    }
-
-    .sheet-kettle {
-      transform: rotate(0.8deg);
-    }
-
-    .back-yellow {
-      background: var(--yellow);
-      border-radius: 20px;
-      transform: rotate(-1.8deg) translate(-6px, 8px);
-      z-index: 1;
-    }
-
-    .sheet-tape {
-      top: -15px;
-      left: 50%;
-      transform: translateX(-50%) rotate(-3deg);
-    }
-
-    .sheet-tape.tilted-right {
-      transform: translateX(-50%) rotate(4deg);
-    }
-
-    /* BMW ASCII Frame */
-    .ascii-stage {
-      border: var(--border);
-      border-radius: 14px;
-      padding: 1.15rem 1rem 1.25rem;
-      margin-bottom: 1.35rem;
-      overflow-x: auto;
-      transition: background-color 200ms var(--ease-out), color 200ms var(--ease-out);
-      background: #1B1A22;
-      color: #F8F4FF;
-    }
-
-    .ascii-stage.pink-stage {
-      position: relative;
-      background: #FFC6D9;
-      color: #260B15;
-    }
-
-    .heading-paren {
-      font-family: "Plus Jakarta Sans", system-ui, sans-serif;
-      font-size: var(--text-body);
-      font-weight: 700;
-      color: var(--muted);
-      letter-spacing: 0;
-    }
-
-    .ascii-art {
-      margin: 0;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: clamp(0.62rem, 1.25vw, 0.84rem);
-      line-height: 1.28;
-      white-space: pre;
+      padding: clamp(2rem, 5vw, 3rem);
       text-align: center;
-      user-select: all;
     }
 
-
-
-    /* Steam animation when whistle is tapped */
-    .steam-layer {
-      position: absolute;
-      top: 12%;
-      left: 24%;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 220ms var(--ease-out);
+    .card-tape-l {
+      top: -13px;
+      left: 28px;
+      transform: rotate(-8deg);
     }
 
-    .steam-layer.is-steaming {
-      opacity: 1;
+    .card-tape-r {
+      top: -13px;
+      right: 28px;
+      transform: rotate(6deg);
     }
 
-    .steam-puff {
-      display: inline-block;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.92);
-      border: 2px solid var(--ink);
-      margin-right: 4px;
-      animation: puffRise 900ms var(--ease-out) infinite;
+    .char-wrap {
+      width: clamp(120px, 22vw, 180px);
+      margin: 0 auto 1rem;
+      animation: bounce 2.5s var(--ease) infinite;
     }
 
-    .steam-puff:nth-child(2) {
-      width: 14px;
-      height: 14px;
-      animation-delay: 180ms;
+    .char-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: drop-shadow(3px 3px 0 var(--ink));
     }
 
-    .steam-puff:nth-child(3) {
-      width: 20px;
-      height: 20px;
-      animation-delay: 360ms;
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
     }
 
-    @keyframes puffRise {
-      0% { transform: translateY(10px) scale(0.7); opacity: 0; }
-      35% { opacity: 1; }
-      100% { transform: translateY(-28px) scale(1.15); opacity: 0; }
-    }
-
-    /* Item meta & paper price tag */
-    .item-top {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 0.85rem;
-      margin-bottom: 0.85rem;
-    }
-
-    .price-tag {
-      position: relative;
+    .badge {
       display: inline-flex;
-      flex-direction: column;
-      align-items: flex-end;
+      align-items: center;
+      gap: .4rem;
       background: var(--yellow);
       border: 2.5px solid var(--ink);
       border-radius: 10px;
-      padding: 0.45rem 0.9rem 0.45rem 1.45rem;
+      padding: .35rem .9rem;
+      font-size: .8rem;
+      font-weight: 800;
+      letter-spacing: .04em;
       box-shadow: var(--shadow-sm);
-      transform: rotate(2.5deg);
-      font-variant-numeric: tabular-nums;
-      flex-shrink: 0;
+      transform: rotate(-2deg);
+      margin-bottom: 1.2rem;
+      text-transform: uppercase;
     }
 
-    .price-tag::before {
-      content: "";
-      position: absolute;
-      left: 9px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--surface);
-      border: 2px solid var(--ink);
-    }
-
-    .price-amount {
-      font-family: "Bricolage Grotesque", system-ui, sans-serif;
-      font-size: 1.25rem;
+    .card h1 {
+      font-size: clamp(1.6rem, 4.5vw, 2.4rem);
       font-weight: 800;
       line-height: 1.1;
+      margin-bottom: .8rem;
     }
 
-    .price-sub {
-      font-size: var(--text-sm);
-      font-weight: 700;
-      color: var(--ink);
-      line-height: 1.2;
-    }
-
-    .item-desc {
+    .card .subtitle {
       color: var(--muted);
-      font-size: var(--text-body);
-      margin-bottom: 1.25rem;
+      font-size: 1rem;
+      font-weight: 600;
+      max-width: 38ch;
+      margin: 0 auto .5rem;
+      line-height: 1.5;
     }
 
-    .item-actions {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0.75rem;
+    .speech {
+      display: inline-block;
+      background: var(--pink-soft);
+      border: 2.5px solid var(--ink);
+      border-radius: 14px;
+      padding: .7rem 1.1rem;
+      box-shadow: var(--shadow-sm);
+      transform: rotate(1deg);
+      margin: 1.2rem auto .2rem;
+      max-width: 340px;
+      font-family: "Caveat", cursive;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--pink-deep);
     }
 
-    .btn-bag {
+    .divider {
+      border: none;
+      border-top: 2.5px dashed rgba(20, 20, 20, .25);
+      margin: 1.4rem 0;
+    }
+
+    .twitch-link {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.45rem;
-      background: var(--mint);
-      color: var(--ink);
-      font-size: var(--text-sm);
-      font-weight: 700;
-      border: 2.5px solid var(--ink);
-      border-radius: 12px;
-      padding: 0.65rem 1.2rem;
-      box-shadow: var(--shadow-sm);
-      transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out), background-color 160ms var(--ease-out);
-    }
-
-    .btn-bag:hover {
-      background: #8BE8BF;
-      transform: translate(-1px, -1px);
-      box-shadow: 4px 4px 0px var(--ink);
-    }
-
-    .btn-bag:active {
-      transform: translate(2px, 2px);
-      box-shadow: 1px 1px 0px var(--ink);
-    }
-
-    .btn-bag.pink-bg {
+      gap: .5rem;
       background: var(--pink);
-    }
-
-    .btn-bag.pink-bg:hover {
-      background: #FF789B;
-    }
-
-    .text-action {
-      background: none;
-      border: 0;
-      padding: 0.45rem 0.25rem;
-      font-size: var(--text-sm);
+      color: var(--ink);
+      font-size: .9rem;
       font-weight: 700;
-      color: var(--ink);
-      text-decoration: underline;
-      text-decoration-thickness: 2px;
-      text-underline-offset: 4px;
-      transition: color 150ms var(--ease-out);
-    }
-
-    .text-action:hover {
-      color: var(--pink-deep);
-    }
-
-    /* Support Original Creator Scrapbook Spread */
-    .support-spread {
-      position: relative;
-      z-index: 2;
-      background: var(--lavender);
-      border: var(--border);
-      border-radius: 22px;
-      box-shadow: var(--shadow-lg);
-      padding: clamp(1.75rem, 4vw, 3rem);
-      display: grid;
-      grid-template-columns: 1.3fr 0.7fr;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .back-cream {
-      background: var(--surface);
-      border-radius: 22px;
-      transform: rotate(-1.1deg) translate(-5px, 7px);
-      z-index: 1;
-    }
-
-    .support-list {
-      margin: 1rem 0 0;
-      padding-left: 1.25rem;
-      color: var(--ink);
-      font-size: var(--text-body);
-    }
-
-    .support-list li + li {
-      margin-top: 0.45rem;
-    }
-
-    .support-cta-box {
-      background: var(--surface);
-      border: var(--border);
-      border-radius: 16px;
-      padding: 1.5rem;
-      box-shadow: var(--shadow-md);
-      transform: rotate(1.4deg);
-      text-align: center;
-    }
-
-    .support-cta-box p {
-      font-size: var(--text-sm);
-      color: var(--muted);
-      font-weight: 600;
-      margin: 0 auto 1.15rem;
-    }
-
-    /* Footer with apologies to Kettle */
-    .site-footer {
-      margin-top: clamp(3.5rem, 7vw, 5rem);
-      position: relative;
-      background: var(--surface);
-      border: var(--border);
-      border-radius: 22px;
-      box-shadow: var(--shadow-lg);
-      padding: clamp(1.75rem, 4vw, 2.75rem);
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.35fr 0.65fr;
-      gap: 2rem;
-      align-items: start;
-    }
-
-    .apology-note {
-      font-size: var(--text-body);
-      color: var(--ink);
-      margin-top: 0.85rem;
-    }
-
-    .apology-ps {
-      font-size: var(--text-sm);
-      color: var(--muted);
-      font-weight: 600;
-      margin-top: 0.85rem;
-    }
-
-    .footer-side {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.9rem;
-    }
-
-    .forgive-status {
-      font-size: var(--text-sm);
-      font-weight: 700;
-      color: var(--pink-deep);
-      min-height: 1.4em;
-    }
-
-    .footer-bottom {
-      margin-top: 1.75rem;
-      padding-top: 1.2rem;
-      border-top: 2.5px dashed var(--ink);
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.75rem 1.5rem;
-      font-size: var(--text-sm);
-      font-weight: 600;
-      color: var(--muted);
-    }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.25rem;
-    }
-
-    /* Landing Disclaimer Modal */
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      z-index: 80;
-      background: rgba(20, 20, 20, 0.58);
-      backdrop-filter: blur(4px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.25rem;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 200ms var(--ease-out), visibility 200ms var(--ease-out);
-    }
-
-    .modal-backdrop.is-open {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .modal-wrap {
-      position: relative;
-      width: 100%;
-      max-width: 560px;
-      transform: translateY(14px);
-      transition: transform 220ms var(--ease-out);
-    }
-
-    .modal-backdrop.is-open .modal-wrap {
-      transform: translateY(0);
-    }
-
-    .modal-back {
-      background: var(--yellow);
-      border-radius: 22px;
-      transform: rotate(2.1deg) translate(6px, 7px);
-      z-index: 1;
-    }
-
-    .modal-card {
-      position: relative;
-      z-index: 2;
-      background: var(--surface);
-      border: var(--border);
-      border-radius: 22px;
-      box-shadow: var(--shadow-lg);
-      padding: 2rem 1.85rem 1.85rem;
-      transform: rotate(-0.6deg);
-    }
-
-    .modal-card p {
-      margin-top: 0.85rem;
-      color: var(--muted);
-      font-size: var(--text-body);
-    }
-
-    .modal-actions {
-      margin-top: 1.5rem;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0.85rem;
-    }
-
-    /* Cart Drawer */
-    .drawer-backdrop {
-      position: fixed;
-      inset: 0;
-      z-index: 70;
-      background: rgba(20, 20, 20, 0.45);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 180ms var(--ease-out), visibility 180ms var(--ease-out);
-    }
-
-    .drawer-backdrop.is-open {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .bag-drawer {
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 75;
-      width: min(400px, 100vw);
-      background: var(--surface);
-      border-left: var(--border);
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      transform: translateX(100%);
-      transition: transform 220ms var(--ease-out);
-    }
-
-    .bag-drawer.is-open {
-      transform: translateX(0);
-    }
-
-    .drawer-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-bottom: 1rem;
-      border-bottom: 2.5px solid var(--ink);
-    }
-
-    .drawer-body {
-      flex: 1;
-      overflow-y: auto;
-      padding: 1.25rem 0;
-    }
-
-    .bag-empty {
-      color: var(--muted);
-      font-size: var(--text-body);
-    }
-
-    .bag-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.75rem;
-      padding: 0.85rem 0;
-      border-bottom: 2px dashed rgba(20, 20, 20, 0.25);
-    }
-
-    .bag-item-title {
-      font-weight: 700;
-      font-size: var(--text-body);
-    }
-
-    .bag-item-price {
-      font-size: var(--text-sm);
-      color: var(--muted);
-      font-variant-numeric: tabular-nums;
-    }
-
-    .drawer-foot {
-      border-top: 2.5px solid var(--ink);
-      padding-top: 1rem;
-    }
-
-    .bag-total-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      font-weight: 800;
-      font-size: var(--text-body);
-      margin-bottom: 0.9rem;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .checkout-joke {
-      margin-top: 0.9rem;
-      padding: 0.85rem;
-      background: var(--pink-soft, #FFE3EC);
-      border: 2px solid var(--ink);
-      border-radius: 12px;
-      font-size: var(--text-sm);
-      font-weight: 600;
-      display: none;
-    }
-
-    .checkout-joke.is-visible {
-      display: block;
-    }
-
-    /* Toast */
-    .toast {
-      position: fixed;
-      bottom: 1.25rem;
-      left: 50%;
-      transform: translateX(-50%) translateY(20px);
-      z-index: 90;
-      background: var(--yellow);
-      color: var(--ink);
+      text-decoration: none;
       border: 2.5px solid var(--ink);
       border-radius: 12px;
-      padding: 0.7rem 1.2rem;
-      font-size: var(--text-sm);
-      font-weight: 700;
+      padding: .65rem 1.3rem;
       box-shadow: var(--shadow-sm);
-      opacity: 0;
+      transition: transform 160ms var(--ease), box-shadow 160ms var(--ease), background 160ms var(--ease);
+    }
+
+    .twitch-link:hover {
+      background: #FF789B;
+      transform: translate(-1px, -1px);
+      box-shadow: 5px 5px 0 var(--ink);
+    }
+
+    .twitch-link:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 var(--ink);
+    }
+
+    .footer-note {
+      margin-top: 1.2rem;
+      font-size: .78rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .doodle {
+      position: fixed;
       pointer-events: none;
-      transition: opacity 180ms var(--ease-out), transform 180ms var(--ease-out);
-      max-width: calc(100vw - 2rem);
-      text-align: center;
+      z-index: 0;
+      opacity: .5;
     }
 
-    .toast.is-visible {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
+    .doodle-1 {
+      top: 8%;
+      left: 5%;
+      width: 50px;
+      animation: spin 12s linear infinite;
     }
 
-    @media (max-width: 860px) {
-      .catalog-grid,
-      .support-spread,
-      .footer-grid {
-        grid-template-columns: 1fr;
+    .doodle-2 {
+      bottom: 10%;
+      right: 6%;
+      width: 45px;
+      animation: spin 15s linear infinite reverse;
+    }
+
+    .doodle-3 {
+      top: 15%;
+      right: 10%;
+      width: 38px;
+      animation: float 4s var(--ease) infinite;
+    }
+
+    .doodle-4 {
+      bottom: 18%;
+      left: 8%;
+      width: 42px;
+      animation: float 5s var(--ease) infinite .5s;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0);
       }
 
-      .sheet-bmw,
-      .sheet-kettle,
-      .support-cta-box {
-        transform: none;
-      }
-
-      .nav-links {
-        gap: 0.75rem;
-      }
-
-      .nav-hide-mobile {
-        display: none;
+      50% {
+        transform: translateY(-15px) rotate(5deg);
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
         animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
       }
     }
   </style>
 </head>
+
 <body>
-  <header class="site-header" id="siteHeader">
-    <div class="header-inner">
-      <a href="#top" class="brand-wordmark">
-        <span class="brand-dot" aria-hidden="true"></span>
-        kettletoro.shop
-      </a>
-      <nav class="nav-links" aria-label="Primary">
-        <a href="#catalog" class="nav-link nav-hide-mobile">Catalog</a>
-        <a href="#support" class="nav-link nav-hide-mobile">Support Kettle</a>
-        <button type="button" class="nav-link" id="openDisclaimerBtn">Disclaimer</button>
-        <button type="button" class="bag-trigger" id="openBagBtn" aria-label="Open cart">
-          Cart (<span id="bagCount">0</span>)
-        </button>
-      </nav>
-    </div>
-  </header>
+  <svg class="doodle doodle-1" viewBox="0 0 64 64" fill="none">
+    <path d="M32 4L39.5 23.5L60 25L44.5 38.5L49 59L32 48L15 59L19.5 38.5L4 25L24.5 23.5L32 4Z" fill="#FFE45E"
+      stroke="#141414" stroke-width="3" stroke-linejoin="round" />
+  </svg>
+  <svg class="doodle doodle-2" viewBox="0 0 64 64" fill="none">
+    <path
+      d="M32 55C32 55 8 40.5 8 22.5C8 14.5 14.2 8.5 21.8 8.5C26.6 8.5 30.3 11 32 14.2C33.7 11 37.4 8.5 42.2 8.5C49.8 8.5 56 14.5 56 22.5C56 40.5 32 55 32 55Z"
+      fill="#FF8FAB" stroke="#141414" stroke-width="3" stroke-linejoin="round" />
+  </svg>
+  <svg class="doodle doodle-3" viewBox="0 0 64 64" fill="none">
+    <circle cx="32" cy="32" r="26" fill="#A8F0D1" stroke="#141414" stroke-width="3" />
+  </svg>
+  <svg class="doodle doodle-4" viewBox="0 0 64 64" fill="none">
+    <rect x="10" y="10" width="44" height="44" rx="8" fill="#B8D0FF" stroke="#141414" stroke-width="3"
+      transform="rotate(12 32 32)" />
+  </svg>
+  <div class="card-outer">
+    <div class="layer-wrap">
+      <div class="layer-back card-back-mint" aria-hidden="true"></div>
+      <div class="layer-back card-back-pink" aria-hidden="true"></div>
+      <div class="card">
+        <div class="tape pink card-tape-l" aria-hidden="true"></div>
+        <div class="tape mint card-tape-r" aria-hidden="true"></div>
 
-  <main class="page-wrap" id="top">
-    <section class="hero" aria-labelledby="heroHeading">
-      <div class="layer-wrap">
-        <div class="layer-back hero-back-mint" aria-hidden="true"></div>
-        <div class="layer-back hero-back-pink" aria-hidden="true"></div>
-      <div class="hero-stage">
-        <div class="washi-tape hero-tape-left" aria-hidden="true"></div>
-        <div class="washi-tape pink hero-tape-right" aria-hidden="true"></div>
+        <div class="char-wrap">
+          <img src="profile_charecter_png.png" alt="kettletoro character" />
+        </div>
 
-        <h1 class="hero-title" id="heroHeading">
-          Not the real <span class="hero-highlight">kettletoro's shop</span>.
-        </h1>
-        <p class="hero-copy">
-          A fan-made temporary domain holding page made purely for funsies. Nothing here is for sale, so go support the real kettletoro on Twitch.
+        <div class="badge">Under Maintenance !!</div>
+
+        <hr class="divider" />
+
+        <a href="https://twitch.tv/kettletoro" target="_blank" rel="noopener noreferrer" class="twitch-link">
+          Watch her on Twitch while you wait ↗
+        </a>
+
+        <p class="footer-note">
+          Fan-made page · Nothing is for sale · No data stored
         </p>
-        <a
-          href="https://twitch.tv/kettletoro"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-primary"
-        >
-          Support kettletoro on Twitch
-        </a>
-
-        <svg class="hero-doodle doodle-star" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-          <path d="M32 4L39.5 23.5L60 25L44.5 38.5L49 59L32 48L15 59L19.5 38.5L4 25L24.5 23.5L32 4Z" fill="#FFE45E" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" />
-        </svg>
-        <svg class="hero-doodle doodle-heart" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-          <path d="M32 55C32 55 8 40.5 8 22.5C8 14.5 14.2 8.5 21.8 8.5C26.6 8.5 30.3 11 32 14.2C33.7 11 37.4 8.5 42.2 8.5C49.8 8.5 56 14.5 56 22.5C56 40.5 32 55 32 55Z" fill="#FF8FAB" stroke="#141414" stroke-width="3.5" stroke-linejoin="round" />
-        </svg>
       </div>
-      </div>
-    </section>
-
-    <section class="section-block" id="catalog" aria-labelledby="catalogHeading">
-      <div class="section-head">
-        <h2 id="catalogHeading">What we sell <span class="heading-paren">(dont actually pay, its fake dumass!!)</span></h2>
-        <p class="section-note">my top 10 ideas for her merch</p>
-      </div>
-
-      <div class="catalog-grid">
-        <!-- Item 1: BMW X7 Rear ASCII Art -->
-        <div class="layer-wrap">
-          <div class="layer-back back-sky" aria-hidden="true"></div>
-        <article class="scrapbook-sheet sheet-bmw">
-          <div class="washi-tape sky sheet-tape" aria-hidden="true"></div>
-
-          <div class="ascii-stage" id="bmwAsciiStage" data-theme="graphite" role="img" aria-label="BMW X7 rear view ASCII art">
-<pre class="ascii-art" id="bmwAsciiPre">             ______________________________
-           _/  |________________________|  \_
-          /   /                          \   \
-         /   /     [  BMW X7  REAR  ]     \   \
-      __/___/______________________________\___\__
-     /  ________________________________________  \
-    |  [====\__________( (O) )__________/====]  |
-    |  |  |  |  |       _____       |  |  |  |  |
-    |  |__|__|__|      |X7 KTL|     |__|__|__|  |
-    |  ________________________________________  |
-    | /  ____________________________________  \ |
-    | | [____]                          [____] | |
-    |_\________________________________________/_|
-       |    |                            |    |
-       |____|                            |____|</pre>
-          </div>
-
-          <div class="item-top">
-            <h3>BMW X7 Rear</h3>
-            <div class="price-tag" aria-label="Price 999,999 dollars, 1 of 1 Limited">
-              <span class="price-amount">$999,999.00</span>
-              <span class="price-sub">1 of 1 Limited</span>
-            </div>
-          </div>
-
-          <p class="item-desc">
-            Exclusive kettle's achievement : Destroying karen's bmw. NOW on SALE !! We (yes WE) troll her every year for bmw incident. 
-          </p>
-
-          <div class="item-actions">
-            <button type="button" class="btn-bag" data-add-item="bmw">Add to cart</button>
-          </div>
-        </article>
-        </div>
-
-        <!-- Item 2: Kettle's Kettle -->
-        <div class="layer-wrap">
-          <div class="layer-back back-yellow" aria-hidden="true"></div>
-        <article class="scrapbook-sheet sheet-kettle">
-          <div class="washi-tape mint sheet-tape tilted-right" aria-hidden="true"></div>
-
-          <div class="ascii-stage pink-stage" role="img" aria-label="Pink kettle ASCII art">
-            <div class="steam-layer" id="steamLayer" aria-hidden="true">
-              <span class="steam-puff"></span>
-              <span class="steam-puff"></span>
-              <span class="steam-puff"></span>
-            </div>
-<pre class="ascii-art" id="kettleAsciiPre">                 _____________
-               _/             \_
-              /    _________    \
-             |    /   (_)   \    |
-             |   |  _______  |   |
-       __    |   |_/       \_|   |
-      /  \   |  /             \  |
-     | () \  | /               \ |
-      \    \_|/    KETTLE'S     \|
-       \     /      KETTLE       \
-        \___/                     \
-           |                       |
-           |                       |
-            \_____________________/</pre>
-          </div>
-
-          <div class="item-top">
-            <h3>Kettle's Kettle</h3>
-            <div class="price-tag" aria-label="Price 4,444 dollars, not actually for sale">
-              <span class="price-amount">$4,444.00</span>
-              <span class="price-sub">Pink edition</span>
-            </div>
-          </div>
-
-          <p class="item-desc">
-            Whats a kettletoro merch without ketol herself. i think she will beat actual kettle's on google search one day. atleast i want to believe in her dream.
-          </p>
-
-          <div class="item-actions">
-            <button type="button" class="btn-bag pink-bg" data-add-item="kettle">Add to cart</button>
-          </div>
-        </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-block" id="support" aria-labelledby="supportHeading">
-      <div class="layer-wrap">
-        <div class="layer-back back-cream" aria-hidden="true"></div>
-      <div class="support-spread">
-        <div>
-          <h2 id="supportHeading">Support the real kettletoro</h2>
-          <ul class="support-list">
-            <li>This page is an unofficial fan-made holding site built for funsies.</li>
-            <li>Nothing on kettletoro.shop is real merchandise, and no payment is collected.</li>
-            <li>All love, follows, and subs belong on the original creator's Twitch channel.</li>
-          </ul>
-        </div>
-
-        <div class="support-cta-box">
-          <p>Head over to the real stream and show kettletoro some actual support.</p>
-          <a
-            href="https://twitch.tv/kettletoro"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn-primary"
-          >
-            Visit twitch.tv/kettletoro
-          </a>
-        </div>
-      </div>
-      </div>
-    </section>
-
-    <footer class="site-footer" aria-labelledby="footerHeading">
-      <div class="footer-grid">
-        <div>
-          <h2 id="footerHeading">Dear KettleTORO, we are so sorry</h2>
-          <p class="apology-note">
-            I Sincere apologies to kettletoro for parking bmw on kettletoro.shop, and buying this dns without your prior knowledge, I know u dont have big chest *But u have big heart to forgive me for my sins. Please do not ban me from chat. If you ever want this domain, just say the word.
-          </p>
-          <p class="apology-ps">
-            yours lovely - fear :)
-          </p>
-        </div>
-
-        <div class="footer-side">
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <span>i wuv kettletoro rawr XD x3  </span>
-        <div class="footer-links">
-          <button type="button" class="text-action" id="footerDisclaimerBtn">Read disclaimer again</button>
-          <a href="https://twitch.tv/kettletoro" target="_blank" rel="noopener noreferrer" class="text-action">
-            twitch.tv/kettletoro
-          </a>
-        </div>
-      </div>
-    </footer>
-  </main>
-
-  <!-- Landing Disclaimer Modal -->
-  <div class="modal-backdrop is-open" id="disclaimerModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-wrap">
-      <div class="layer-back modal-back" aria-hidden="true"></div>
-    <div class="modal-card">
-      <div class="washi-tape pink sheet-tape" aria-hidden="true"></div>
-      <h2 id="modalTitle">Hold up, this is not a real shop!</h2>
-      <p>
-        This website is not made by the real creator and you cannot buy anything here. It is a fan-made temporary holding page put together purely for funsies.
-      </p>
-      <p>
-        Please support the original creator directly over at kettletoro on Twitch.
-      </p>
-      <div class="modal-actions">
-        <button type="button" class="btn-primary" id="closeDisclaimerBtn">Got it, show me!</button>
-        <a
-          href="https://twitch.tv/kettletoro"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-secondary"
-        >
-          Go to twitch.tv/kettletoro
-        </a>
-      </div>
-    </div>
     </div>
   </div>
 
-  <!-- Cart Drawer -->
-  <div class="drawer-backdrop" id="drawerBackdrop"></div>
-  <aside class="bag-drawer" id="bagDrawer" aria-label="Shopping cart" aria-hidden="true">
-    <div class="drawer-head">
-      <h2>Your cart</h2>
-      <button type="button" class="btn-secondary" id="closeBagBtn">Close</button>
-    </div>
-
-    <div class="drawer-body" id="bagItemsContainer">
-      <p class="bag-empty">Your cart is empty. Add an item.</p>
-    </div>
-
-    <div class="drawer-foot">
-      <div class="bag-total-row">
-        <span>Total</span>
-        <span id="bagTotal">$0.00</span>
-      </div>
-      <button type="button" class="btn-primary" id="checkoutBtn" style="width: 100%;">
-        Checkout
-      </button>
-      <div class="checkout-joke" id="checkoutJoke">
-        Nice try! Not a real shop tho, zero dollars charged. Go drop a follow or sub at
-        <a href="https://twitch.tv/kettletoro" target="_blank" rel="noopener noreferrer">twitch.tv/kettletoro</a> instead.
-      </div>
-    </div>
-  </aside>
-
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-  <script>
-    (function () {
-      const CATALOG = {
-        bmw: {
-          id: "bmw",
-          name: "BMW X7 Rear ended (1 of 1 Limited)",
-          price: 999999
-        },
-        kettle: {
-          id: "kettle",
-          name: "Kettle's Kettle (Pink)",
-          price: 4444
-        }
-      };
-
-      const state = {
-        bag: {},
-        apologyCount: 0
-      };
-
-      const siteHeader = document.getElementById("siteHeader");
-      const disclaimerModal = document.getElementById("disclaimerModal");
-      const closeDisclaimerBtn = document.getElementById("closeDisclaimerBtn");
-      const openDisclaimerBtn = document.getElementById("openDisclaimerBtn");
-      const footerDisclaimerBtn = document.getElementById("footerDisclaimerBtn");
-
-      const bmwAsciiPre = document.getElementById("bmwAsciiPre");
-      const copyAsciiBtn = document.getElementById("copyAsciiBtn");
-
-      const whistleBtn = document.getElementById("whistleBtn");
-      const steamLayer = document.getElementById("steamLayer");
-
-      const openBagBtn = document.getElementById("openBagBtn");
-      const closeBagBtn = document.getElementById("closeBagBtn");
-      const drawerBackdrop = document.getElementById("drawerBackdrop");
-      const bagDrawer = document.getElementById("bagDrawer");
-      const bagCount = document.getElementById("bagCount");
-      const bagItemsContainer = document.getElementById("bagItemsContainer");
-      const bagTotal = document.getElementById("bagTotal");
-      const checkoutBtn = document.getElementById("checkoutBtn");
-      const checkoutJoke = document.getElementById("checkoutJoke");
-
-      const forgiveBtn = document.getElementById("forgiveBtn");
-      const forgiveStatus = document.getElementById("forgiveStatus");
-      const toastEl = document.getElementById("toast");
-
-      let toastTimer = null;
-      let steamTimer = null;
-
-      function showToast(message) {
-        toastEl.textContent = message;
-        toastEl.classList.add("is-visible");
-        if (toastTimer) clearTimeout(toastTimer);
-        toastTimer = setTimeout(function () {
-          toastEl.classList.remove("is-visible");
-        }, 2600);
-      }
-
-      function formatMoney(amount) {
-        return "$" + amount.toLocaleString("en-US", {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2
-        });
-      }
-
-      // Header scroll separation
-      window.addEventListener("scroll", function () {
-        if (window.scrollY > 12) {
-          siteHeader.classList.add("is-scrolled");
-        } else {
-          siteHeader.classList.remove("is-scrolled");
-        }
-      }, { passive: true });
-
-      // Disclaimer modal controls
-      function openModal() {
-        disclaimerModal.classList.add("is-open");
-      }
-
-      function closeModal() {
-        disclaimerModal.classList.remove("is-open");
-      }
-
-      closeDisclaimerBtn.addEventListener("click", closeModal);
-      openDisclaimerBtn.addEventListener("click", openModal);
-      footerDisclaimerBtn.addEventListener("click", openModal);
-      disclaimerModal.addEventListener("click", function (e) {
-        if (e.target === disclaimerModal) closeModal();
-      });
-
-      document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape") {
-          closeModal();
-          closeDrawer();
-        }
-      });
-
-      // Copy ASCII art with sandbox-safe fallback
-      copyAsciiBtn.addEventListener("click", function () {
-        const text = bmwAsciiPre.textContent;
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(text).then(function () {
-            showToast("BMW X7 ASCII art copied to clipboard.");
-          }).catch(function () {
-            fallbackCopy(text);
-          });
-        } else {
-          fallbackCopy(text);
-        }
-      });
-
-      function fallbackCopy(text) {
-        const area = document.createElement("textarea");
-        area.value = text;
-        area.style.position = "fixed";
-        area.style.opacity = "0";
-        document.body.appendChild(area);
-        area.select();
-        try {
-          document.execCommand("copy");
-          showToast("BMW X7 ASCII art copied to clipboard.");
-        } catch (err) {
-          showToast("Select the ASCII box to copy it manually.");
-        }
-        document.body.removeChild(area);
-      }
-
-      // Synthesized cute kettle whistle using Web Audio API
-      function playKettleWhistle() {
-        try {
-          const AudioCtx = window.AudioContext || window.webkitAudioContext;
-          if (!AudioCtx) return;
-          const ctx = new AudioCtx();
-          const now = ctx.currentTime;
-          const osc = ctx.createOscillator();
-          const gain = ctx.createGain();
-          osc.type = "sine";
-          osc.frequency.setValueAtTime(980, now);
-          osc.frequency.exponentialRampToValueAtTime(1480, now + 0.35);
-          osc.frequency.exponentialRampToValueAtTime(1320, now + 0.7);
-          gain.gain.setValueAtTime(0.001, now);
-          gain.gain.exponentialRampToValueAtTime(0.08, now + 0.15);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.78);
-          osc.connect(gain);
-          gain.connect(ctx.destination);
-          osc.start(now);
-          osc.stop(now + 0.8);
-        } catch (err) {
-          // Ignore audio errors if blocked
-        }
-      }
-
-      whistleBtn.addEventListener("click", function () {
-        playKettleWhistle();
-        steamLayer.classList.add("is-steaming");
-        showToast("Pink kettle is whistling!");
-        if (steamTimer) clearTimeout(steamTimer);
-        steamTimer = setTimeout(function () {
-          steamLayer.classList.remove("is-steaming");
-        }, 2000);
-      });
-
-      // Cart state & rendering
-      function openDrawer() {
-        bagDrawer.classList.add("is-open");
-        bagDrawer.setAttribute("aria-hidden", "false");
-        drawerBackdrop.classList.add("is-open");
-      }
-
-      function closeDrawer() {
-        bagDrawer.classList.remove("is-open");
-        bagDrawer.setAttribute("aria-hidden", "true");
-        drawerBackdrop.classList.remove("is-open");
-      }
-
-      openBagBtn.addEventListener("click", openDrawer);
-      closeBagBtn.addEventListener("click", closeDrawer);
-      drawerBackdrop.addEventListener("click", closeDrawer);
-
-      function renderBag() {
-        const ids = Object.keys(state.bag);
-        let count = 0;
-        let total = 0;
-
-        if (ids.length === 0) {
-          bagItemsContainer.innerHTML = '<p class="bag-empty">Your cart is empty. Add an item to test the silliness.</p>';
-          bagCount.textContent = "0";
-          bagTotal.textContent = "$0.00";
-          checkoutJoke.classList.remove("is-visible");
-          return;
-        }
-
-        bagItemsContainer.innerHTML = "";
-        ids.forEach(function (id) {
-          const qty = state.bag[id];
-          const item = CATALOG[id];
-          count += qty;
-          total += item.price * qty;
-
-          const row = document.createElement("div");
-          row.className = "bag-item";
-
-          const info = document.createElement("div");
-          const title = document.createElement("div");
-          title.className = "bag-item-title";
-          title.textContent = item.name + (qty > 1 ? " x" + qty : "");
-          const price = document.createElement("div");
-          price.className = "bag-item-price";
-          price.textContent = formatMoney(item.price * qty);
-          info.appendChild(title);
-          info.appendChild(price);
-
-          const removeBtn = document.createElement("button");
-          removeBtn.type = "button";
-          removeBtn.className = "text-action";
-          removeBtn.textContent = "Remove";
-          removeBtn.addEventListener("click", function () {
-            delete state.bag[id];
-            renderBag();
-          });
-
-          row.appendChild(info);
-          row.appendChild(removeBtn);
-          bagItemsContainer.appendChild(row);
-        });
-
-        bagCount.textContent = String(count);
-        bagTotal.textContent = formatMoney(total);
-      }
-
-      document.querySelectorAll("[data-add-item]").forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          const id = btn.getAttribute("data-add-item");
-          if (id === "bmw" && state.bag.bmw >= 1) {
-            showToast("Whoa, it is 1 of 1 Limited! Already in your cart.");
-            openDrawer();
-            return;
-          }
-          state.bag[id] = (state.bag[id] || 0) + 1;
-          checkoutJoke.classList.remove("is-visible");
-          renderBag();
-          showToast("Added to cart (still not a real shop!).");
-        });
-      });
-
-      checkoutBtn.addEventListener("click", function () {
-        if (Object.keys(state.bag).length === 0) {
-          showToast("Add an item first!");
-          return;
-        }
-        checkoutJoke.classList.add("is-visible");
-      });
-
-      // Footer apology stamp counter
-      const apologyLines = [
-        "Tiny apology note #1 taped to the fridge.",
-        "Apology note #2 sent. Still hoping not to get timed out.",
-        "Apology note #3 delivered with pink tea.",
-        "Okay that is a lot of apologies. Go watch twitch.tv/kettletoro!"
-      ];
-
-      forgiveBtn.addEventListener("click", function () {
-        state.apologyCount += 1;
-        const idx = Math.min(state.apologyCount - 1, apologyLines.length - 1);
-        forgiveStatus.textContent = apologyLines[idx];
-      });
-    })();
-  </script>
 </body>
+
 </html>
