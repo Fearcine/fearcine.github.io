@@ -643,9 +643,9 @@
   revealEls.forEach((el) => revealObs.observe(el));
 
   const cartJokes = {
-    bmw: 'Added to cart. Hope your insurance is ready.',
-    kettle: 'Added to cart. It only boils tea.',
-    mala: 'Added to cart. Totally vegan, trust.'
+    bmw: 'Added to cart.',
+    kettle: 'Added to cart.',
+    mala: 'Added to cart. You are brave!'
   };
 
   $$('[data-add]').forEach((btn) => {
