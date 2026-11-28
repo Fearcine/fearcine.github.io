@@ -1,3 +1,0 @@
-﻿# My-website
-
-Made to pass some time i was bored

@@ -4,385 +4,314 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>kettletoro.shop — Under Maintenance</title>
+  <title>kettletoro.shop</title>
+
+  <link rel="icon" type="image/png" href="toilet-logo.png" />
+  <link rel="apple-touch-icon" href="toilet-logo.png" />
+
+  <meta name="description" content="kettletoro's meme shop. " />
+  <meta name="keywords"
+    content="kettletoro, kettletoro shop, kettletoro twitch, kettletoro clips, kettletoro merch, twitch streamer, teabags, fan page" />
+  <meta name="author" content="Fear" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://kettletoro.shop/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="kettletoro.shop" />
+  <meta property="og:description" content="lets see if u can find easter eggs " />
+  <meta property="og:url" content="https://kettletoro.shop/" />
+  <meta property="og:image" content="https://kettletoro.shop/profile-character.webp" />
+  <meta property="og:site_name" content="kettletoro.shop" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="kettletoro.shop" />
+  <meta name="twitter:description" content="her meme shop" />
+  <meta name="twitter:image" content="https://kettletoro.shop/profile-character.webp" />
+
+  <link rel="preload" href="profile-character.webp" as="image" />
+  <link rel="preload" href="eat.mp3" as="audio" />
+  <link rel="preload" href="spin.mp3" as="audio" />
+  <link rel="preload" href="clips.js" as="script" />
+
+  <link rel="preconnect" href="https://clips.twitch.tv" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap"
     rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #F5EDE3;
-      --bg-dot: rgba(20, 20, 20, .09);
-      --paper: #FFFDF7;
-      --ink: #141414;
-      --muted: #4A4458;
-      --pink: #FF8FAB;
-      --pink-soft: #FFD6E3;
-      --pink-deep: #C42B5E;
-      --yellow: #FFE45E;
-      --mint: #A8F0D1;
-      --sky: #B8D0FF;
-      --lavender: #E2CFFF;
-      --border: 3px solid var(--ink);
-      --shadow-lg: 8px 8px 0 var(--ink);
-      --shadow-md: 5px 5px 0 var(--ink);
-      --shadow-sm: 3px 3px 0 var(--ink);
-      --ease: cubic-bezier(.22, 1, .36, 1);
-    }
-
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-    }
-
-    html,
-    body {
-      height: 100%;
-    }
-
-    body {
-      margin: 0;
-      font-family: "Plus Jakarta Sans", system-ui, sans-serif;
-      color: var(--ink);
-      background: var(--bg);
-      background-image: radial-gradient(var(--bg-dot) 1.3px, transparent 1.3px);
-      background-size: 22px 22px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      overflow: hidden;
-      padding: 1.25rem;
-    }
-
-    h1,
-    h2,
-    .brand {
-      font-family: "Bricolage Grotesque", system-ui, sans-serif;
-      margin: 0;
-      letter-spacing: -.03em;
-    }
-
-    .tape {
-      position: absolute;
-      width: 110px;
-      height: 26px;
-      background-color: rgba(255, 228, 94, .88);
-      background-image: repeating-linear-gradient(-45deg, transparent, transparent 6px, rgba(20, 20, 20, .08) 6px, rgba(20, 20, 20, .08) 12px);
-      border: 2px solid rgba(20, 20, 20, .78);
-      pointer-events: none;
-      z-index: 4;
-    }
-
-    .tape.pink {
-      background-color: rgba(255, 143, 171, .85);
-    }
-
-    .tape.mint {
-      background-color: rgba(168, 240, 209, .88);
-    }
-
-    .tape.sky {
-      background-color: rgba(184, 208, 255, .88);
-    }
-
-
-    .layer-wrap {
-      position: relative;
-      z-index: 1;
-    }
-
-    .layer-back {
-      position: absolute;
-      inset: 0;
-      border: var(--border);
-      pointer-events: none;
-      z-index: 1;
-    }
-
-
-    .card-outer {
-      width: 100%;
-      max-width: 560px;
-      animation: floatIn .7s var(--ease) both;
-    }
-
-    @keyframes floatIn {
-      from {
-        opacity: 0;
-        transform: translateY(30px) rotate(-2deg);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0) rotate(-0.5deg);
-      }
-    }
-
-    .card-back-pink {
-      background: var(--pink);
-      border-radius: 22px;
-      transform: rotate(-1.8deg) translate(-6px, 8px);
-      z-index: 0;
-    }
-
-    .card-back-mint {
-      background: var(--mint);
-      border-radius: 22px;
-      transform: rotate(1.4deg) translate(8px, 10px);
-      z-index: 0;
-    }
-
-    .card {
-      position: relative;
-      z-index: 2;
-      background: var(--paper);
-      border: var(--border);
-      border-radius: 22px;
-      box-shadow: var(--shadow-lg);
-      padding: clamp(2rem, 5vw, 3rem);
-      text-align: center;
-    }
-
-    .card-tape-l {
-      top: -13px;
-      left: 28px;
-      transform: rotate(-8deg);
-    }
-
-    .card-tape-r {
-      top: -13px;
-      right: 28px;
-      transform: rotate(6deg);
-    }
-
-    .char-wrap {
-      width: clamp(120px, 22vw, 180px);
-      margin: 0 auto 1rem;
-      animation: bounce 2.5s var(--ease) infinite;
-    }
-
-    .char-wrap img {
-      width: 100%;
-      height: auto;
-      display: block;
-      filter: drop-shadow(3px 3px 0 var(--ink));
-    }
-
-    @keyframes bounce {
-
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: .4rem;
-      background: var(--yellow);
-      border: 2.5px solid var(--ink);
-      border-radius: 10px;
-      padding: .35rem .9rem;
-      font-size: .8rem;
-      font-weight: 800;
-      letter-spacing: .04em;
-      box-shadow: var(--shadow-sm);
-      transform: rotate(-2deg);
-      margin-bottom: 1.2rem;
-      text-transform: uppercase;
-    }
-
-    .card h1 {
-      font-size: clamp(1.6rem, 4.5vw, 2.4rem);
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: .8rem;
-    }
-
-    .card .subtitle {
-      color: var(--muted);
-      font-size: 1rem;
-      font-weight: 600;
-      max-width: 38ch;
-      margin: 0 auto .5rem;
-      line-height: 1.5;
-    }
-
-    .speech {
-      display: inline-block;
-      background: var(--pink-soft);
-      border: 2.5px solid var(--ink);
-      border-radius: 14px;
-      padding: .7rem 1.1rem;
-      box-shadow: var(--shadow-sm);
-      transform: rotate(1deg);
-      margin: 1.2rem auto .2rem;
-      max-width: 340px;
-      font-family: "Caveat", cursive;
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--pink-deep);
-    }
-
-    .divider {
-      border: none;
-      border-top: 2.5px dashed rgba(20, 20, 20, .25);
-      margin: 1.4rem 0;
-    }
-
-    .twitch-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: .5rem;
-      background: var(--pink);
-      color: var(--ink);
-      font-size: .9rem;
-      font-weight: 700;
-      text-decoration: none;
-      border: 2.5px solid var(--ink);
-      border-radius: 12px;
-      padding: .65rem 1.3rem;
-      box-shadow: var(--shadow-sm);
-      transition: transform 160ms var(--ease), box-shadow 160ms var(--ease), background 160ms var(--ease);
-    }
-
-    .twitch-link:hover {
-      background: #FF789B;
-      transform: translate(-1px, -1px);
-      box-shadow: 5px 5px 0 var(--ink);
-    }
-
-    .twitch-link:active {
-      transform: translate(2px, 2px);
-      box-shadow: 1px 1px 0 var(--ink);
-    }
-
-    .footer-note {
-      margin-top: 1.2rem;
-      font-size: .78rem;
-      font-weight: 600;
-      color: var(--muted);
-    }
-
-    .doodle {
-      position: fixed;
-      pointer-events: none;
-      z-index: 0;
-      opacity: .5;
-    }
-
-    .doodle-1 {
-      top: 8%;
-      left: 5%;
-      width: 50px;
-      animation: spin 12s linear infinite;
-    }
-
-    .doodle-2 {
-      bottom: 10%;
-      right: 6%;
-      width: 45px;
-      animation: spin 15s linear infinite reverse;
-    }
-
-    .doodle-3 {
-      top: 15%;
-      right: 10%;
-      width: 38px;
-      animation: float 4s var(--ease) infinite;
-    }
-
-    .doodle-4 {
-      bottom: 18%;
-      left: 8%;
-      width: 42px;
-      animation: float 5s var(--ease) infinite .5s;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    @keyframes float {
-
-      0%,
-      100% {
-        transform: translateY(0) rotate(0);
-      }
-
-      50% {
-        transform: translateY(-15px) rotate(5deg);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-
-      *,
-      *::before,
-      *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-  <svg class="doodle doodle-1" viewBox="0 0 64 64" fill="none">
-    <path d="M32 4L39.5 23.5L60 25L44.5 38.5L49 59L32 48L15 59L19.5 38.5L4 25L24.5 23.5L32 4Z" fill="#FFE45E"
-      stroke="#141414" stroke-width="3" stroke-linejoin="round" />
-  </svg>
-  <svg class="doodle doodle-2" viewBox="0 0 64 64" fill="none">
-    <path
-      d="M32 55C32 55 8 40.5 8 22.5C8 14.5 14.2 8.5 21.8 8.5C26.6 8.5 30.3 11 32 14.2C33.7 11 37.4 8.5 42.2 8.5C49.8 8.5 56 14.5 56 22.5C56 40.5 32 55 32 55Z"
-      fill="#FF8FAB" stroke="#141414" stroke-width="3" stroke-linejoin="round" />
-  </svg>
-  <svg class="doodle doodle-3" viewBox="0 0 64 64" fill="none">
-    <circle cx="32" cy="32" r="26" fill="#A8F0D1" stroke="#141414" stroke-width="3" />
-  </svg>
-  <svg class="doodle doodle-4" viewBox="0 0 64 64" fill="none">
-    <rect x="10" y="10" width="44" height="44" rx="8" fill="#B8D0FF" stroke="#141414" stroke-width="3"
-      transform="rotate(12 32 32)" />
-  </svg>
-  <div class="card-outer">
-    <div class="layer-wrap">
-      <div class="layer-back card-back-mint" aria-hidden="true"></div>
-      <div class="layer-back card-back-pink" aria-hidden="true"></div>
-      <div class="card">
-        <div class="tape pink card-tape-l" aria-hidden="true"></div>
-        <div class="tape mint card-tape-r" aria-hidden="true"></div>
 
-        <div class="char-wrap">
-          <img src="profile_charecter_png.png" alt="kettletoro character" />
+  <div class="popup-overlay" id="popupOverlay" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+    <div class="popup-wrap">
+      <div class="layer-back popup-back" aria-hidden="true"></div>
+      <div class="popup-card">
+        <div class="tape pink popup-tape" aria-hidden="true"></div>
+        <h2 id="popupTitle"> Hold up, teabag!</h2>
+        <p>This website is <strong>NOT</strong> made by the real creator and you <strong>cannot</strong> buy anything
+          here. It's a fan-made page built purely for funsie wunsies.</p>
+        <p>Please support the original creator directly on Twitch!</p>
+        <div class="popup-actions">
+          <button type="button" class="btn btn-pink" id="popupDismiss">Got it, let me in!</button>
+          <a href="https://twitch.tv/kettletoro" target="_blank" rel="noopener noreferrer" class="btn btn-paper">Go to
+            Twitch daddy</a>
         </div>
-
-        <div class="badge">Under Maintenance !!</div>
-
-        <hr class="divider" />
-
-        <a href="https://twitch.tv/kettletoro" target="_blank" rel="noopener noreferrer" class="twitch-link">
-          Watch her on Twitch while you wait ↗
-        </a>
-
-        <p class="footer-note">
-          Fan-made page · Nothing is for sale · No data stored
-        </p>
       </div>
     </div>
   </div>
 
+  <nav class="site-nav" id="siteNav">
+    <div class="nav-inner">
+      <a href="#top" class="brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        kettletoro.shop
+      </a>
+      <div class="nav-links">
+        <a href="#shop" class="nav-link nav-hide">Shop</a>
+        <a href="#wheel" class="nav-link nav-hide">Clips</a>
+        <a href="#about" class="nav-link nav-hide">Message</a>
+        <a href="https://twitch.tv/kettletoro" target="_blank" rel="noopener noreferrer" class="btn btn-yellow"
+          style="padding:.4rem .8rem;font-size:var(--text-sm);">Twitch ↗</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page-content" id="pageContent">
+    <div class="chili-layer" id="chiliLayer" aria-hidden="true"></div>
+    <main class="canvas" id="top">
+
+      <section class="char-intro" id="charIntro">
+        <div class="char-img-wrap" id="charImg">
+          <img src="profile-character.webp" alt="Kettletoro character" loading="eager" draggable="false" />
+        </div>
+        <div class="secret-drop" id="secretDrop" aria-hidden="true">
+          <img src="kettle_preg.webp" alt="" loading="lazy" draggable="false" />
+        </div>
+        <div class="char-bubble-wrap" id="charBubble">
+          <div class="char-bubble">
+            <div class="char-name">~ kettletoro ~</div>
+            <div class="char-text" id="charText"><span class="typewriter-cursor"></span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="shop">
+        <div class="sec-head">
+          <h2>What we sell !! <span class="paren"></span></h2>
+        </div>
+
+        <div class="shop-grid">
+
+          <div class="shop-card-wrap" data-reveal>
+            <div class="layer-wrap">
+              <div class="layer-back shop-card-back bg-sky" aria-hidden="true"></div>
+              <div class="shop-card">
+                <div class="tape sky shop-card-tape" aria-hidden="true"></div>
+                <div class="shop-img-frame">
+                  <img src="bmw.jpg" alt="BMW X7 rear view" loading="lazy" />
+                </div>
+                <h3>BMW X7 (Rear ended)</h3>
+                <div class="price-tag">
+                  <span class="price-num">$3,000</span>
+                  <span class="price-label">1 of 1</span>
+                </div>
+                <p class="desc">Get Exclusive BMW X7 with slight dent on back. You will truly get a luxury dealership
+                  tour.
+                  Stay alert when you see her on road.
+                </p>
+                <div class="actions">
+                  <button class="btn btn-mint" data-add="bmw">Add to cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="shop-card-wrap" data-reveal>
+            <div class="layer-wrap">
+              <div class="layer-back shop-card-back bg-pink" aria-hidden="true"></div>
+              <div class="shop-card">
+                <div class="tape pink shop-card-tape" aria-hidden="true"></div>
+                <div class="shop-img-frame">
+                  <img src="kettle.webp" alt="A pink kettle" loading="lazy" />
+                </div>
+                <h3>Kettle's Kettle </h3>
+                <div class="price-tag">
+                  <span class="price-num">$67</span>
+                  <span class="price-label"></span>
+                </div>
+                <p class="desc">Whats a kettleTORO merch without Kettle themed kettle.</p>
+                <div class="actions">
+                  <button class="btn btn-pink" data-add="kettle">Add to cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="shop-card-wrap" data-reveal>
+            <div class="layer-wrap">
+              <div class="layer-back shop-card-back bg-mint" aria-hidden="true"></div>
+              <div class="shop-card">
+                <div class="tape mint shop-card-tape" aria-hidden="true"></div>
+                <div class="shop-img-frame">
+                  <img src="vegan-mala.jpg" alt="Vegan mala noodles" loading="lazy" />
+                </div>
+                <h3>Vegan mala</h3>
+                <div class="price-tag">
+                  <span class="price-num">Free</span>
+                  <span class="price-label"></span>
+                </div>
+                <p class="desc">A true delicacy that gives 1 in a lifetime experince, kettle's fav. Try if u are brave.
+                </p>
+                <div class="actions">
+                  <button class="btn btn-yellow" data-add="mala">Add to cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="wheel">
+        <div class="wheel-section" data-reveal>
+          <div class="sec-head">
+            <h2>Spin the Wheel <span class="paren">(Gamba zone)</span></h2>
+          </div>
+          <div class="layer-wrap">
+            <div class="layer-back wheel-back" aria-hidden="true"></div>
+            <div class="wheel-card">
+              <div class="tape mint"
+                style="top:-13px;left:50%;transform:translateX(-50%) rotate(3deg);position:absolute;"
+                aria-hidden="true"></div>
+              <button type="button" class="wheel-mute-btn" id="wheelMuteBtn" aria-pressed="false"
+                aria-label="Mute wheel sound" title="Mute wheel sound">
+                <svg class="icon-sound-on" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                  stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                </svg>
+                <svg class="icon-sound-off" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                  stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <line x1="22" y1="9" x2="16" y2="15"></line>
+                  <line x1="16" y1="9" x2="22" y2="15"></line>
+                </svg>
+              </button>
+              <div class="wheel-layout">
+                <div class="wheel-controls">
+                  <p class="wheel-lead">Spin to watch a random kettletoro Twitch clip!</p>
+                  <button type="button" class="btn btn-pink spin-btn" id="spinBtn">SPIN WHEEL</button>
+                  <div class="wheel-switch-row">
+                    <label class="switch-label" for="noRepeatSwitch">
+                      <input type="checkbox" class="switch-input" id="noRepeatSwitch" />
+                      <span class="switch-track" aria-hidden="true">
+                        <span class="switch-thumb"></span>
+                      </span>
+                      <span>No-repeat clips</span>
+                    </label>
+                  </div>
+                  <p class="wheel-sub" id="wheelSub">click the wheel or smash the button</p>
+                </div>
+                <div class="wheel-container">
+                  <div class="wheel-pointer" aria-hidden="true">▼</div>
+                  <canvas class="wheel-canvas" id="wheelCanvas" width="960" height="960"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="apology">
+        <div class="apology-section" data-reveal>
+          <div class="sec-head">
+            <h2>Dear Kettle, I am so sorry (not really)</h2>
+          </div>
+          <div class="layer-wrap">
+            <div class="layer-back apology-back" aria-hidden="true"></div>
+            <div class="apology-letter">
+              <div class="tape sky apology-tape" aria-hidden="true"></div>
+              <p class="letter-body">
+                Sincere apologies to kettletoro for parking bmw x7 on <strong>kettletoro.shop</strong>.
+                I had so much fun making this and i hope u like it to. my hands hurts typing this much
+                <br> & <br>
+                Please do not ban me from chat. If you ever want this domain, just say the word.
+              </p>
+              <p class="letter-sign"> with love,
+                - your teabag ♥</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="about-section" data-reveal>
+          <div class="sec-head">
+            <h2>Message to kettle</h2>
+          </div>
+          <div class="layer-wrap">
+            <div class="layer-back about-back" aria-hidden="true"></div>
+            <div class="about-card">
+              <div class="tape pink about-tape" aria-hidden="true"></div>
+              <p class="about-placeholder">Hi this is fear! when I saw your first youtube short on my feed
+                for the first time around 2022ish. At that time I was new to genshin imapct too it was my
+                first anime open world game that I've ever played. I was in love with the game.
+                And then your videos were starting to pop on my feed every now and then. At that time u were so
+                soft and calm & relaxing your voice was so soothing, I was genuine fan that had fell for your content.
+                I stalked and i stalked... found out about twitch and u stream there. you had like 17k-20k followers at
+                that time
+                i thought u were my niche comfy streamer. now you have grown into big indie content creator helping
+                other viewers
+                unknowingly like u did to me. it does really means alot. and keep doing what you been doing. theres
+                nothing nothing
+                more than to see u keep smiling.
+                And and and I hope u do beat the pegion, prestige, and other kettle brands on google search.
+                i still believe in you hope u not giving up on that dream.
+
+                When u do start selling ur real merch... do send to my home wink wink wink !
+
+                !</p>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <span>kettletoro.shop</span>
+      <div class="footer-links">
+        <a href="https://twitch.tv/kettletoro" target="_blank" rel="noopener noreferrer">twitch.tv/kettletoro</a>
+      </div>
+    </footer>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <div class="clip-popup-overlay" id="clipOverlay" role="dialog" aria-modal="true" aria-labelledby="clipTitle">
+    <div class="clip-popup">
+      <button type="button" class="clip-popup-close" id="clipClose" aria-label="Close clip">&times;</button>
+      <div class="clip-popup-title">
+        <span class="clip-badge">CLIP</span>
+        <span id="clipTitle">Clip Title</span>
+      </div>
+      <div class="clip-iframe-wrap" id="clipFrameWrap">
+        <iframe id="clipIframe" allowfullscreen allow="autoplay"></iframe>
+      </div>
+      <div class="clip-popup-actions">
+        <a id="clipTwitchLink" href="https://twitch.tv/kettletoro" target="_blank" rel="noopener noreferrer"
+          class="btn btn-paper">Open on Twitch &nearr;</a>
+        <button type="button" class="btn btn-pink" id="clipSpinAgain">Spin Again</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="clips.js"></script>
+
+  <script src="app.js"></script>
 </body>
 
 </html>
